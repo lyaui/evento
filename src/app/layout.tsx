@@ -4,6 +4,7 @@ import './globals.css';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gray-950 text-white overflow-y-scroll`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Container>
+          <Header />
+          {children}
+          <Footer />
+        </Container>
       </body>
     </html>
   );
