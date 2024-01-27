@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 import Logo from '@/components/Logo';
@@ -23,7 +23,7 @@ export default function Header() {
           {routes.map((_route) => (
             <li
               key={_route.path}
-              className={clsx(
+              className={cn(
                 'hover:text-white flex items-center relative transition',
                 {
                   'text-white': currentPath === _route.path,

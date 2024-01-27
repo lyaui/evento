@@ -15,7 +15,7 @@ async function EventsPage({ params }: EventsPageProps) {
 
   return (
     <main>
-      <H1 className='flex flex-col items-center px-3 pt-36'>
+      <H1 className='flex flex-col items-center px-3 pt-36 mb-28'>
         {params.city === 'all' ? `All Events` : `Events in ${city}`}
       </H1>
       <EventList events={events} />
