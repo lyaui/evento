@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { sleep } from '@/lib/utils';
 import { EventoEvent } from '@/lib/types';
 import H1 from '@/components/H1';
 
@@ -12,9 +13,9 @@ async function EventPage({ params }: EventPageProps) {
     `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
   );
 
-  const event: EventoEvent = await res.json();
+  await sleep(2000);
 
-  console.log({ event });
+  const event: EventoEvent = await res.json();
 
   return (
     <main>
