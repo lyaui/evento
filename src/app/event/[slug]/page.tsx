@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 
-import { sleep } from '@/lib/utils';
+import { sleep, fetchEvent } from '@/lib/utils';
 import { EventoEvent } from '@/lib/types';
 import H1 from '@/components/H1';
 
@@ -12,23 +12,15 @@ type EventPageProps = {
 export const generateMetadata = async ({
   params,
 }: EventPageProps): Promise<Metadata> => {
-  const res = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${params.slug}`,
-  );
-  const event: EventoEvent = await res.json();
+  const event: EventoEvent = await fetchEvent(params.slug);
   return {
     title: `Event: ${event.name}`,
   };
 };
 async function EventPage({ params }: EventPageProps) {
-  const slug = params.slug;
-  const res = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
-  );
-
   // await sleep(2000);
 
-  const event: EventoEvent = await res.json();
+  const event: EventoEvent = await fetchEvent(params.slug);
 
   return (
     <main>
